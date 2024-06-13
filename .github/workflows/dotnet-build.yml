@@ -5,13 +5,15 @@ on:
     - cron: '* 1 * * *' # every Friday 06:30 UTC
     
   push:
-
+    branches: [ "main" ]
 jobs:
 
   job-test:
     runs-on: ubuntu-latest
     steps: 
       - run: echo "teste"
+
+  #marketplace
   build:
     name: .Net Build
     runs-on: ubuntu-latest
