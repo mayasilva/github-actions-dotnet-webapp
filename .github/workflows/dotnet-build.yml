@@ -1,6 +1,10 @@
 name: Github Action dotnet webapp
 
 on:
+
+  schedule:
+    - cron: ‘* 1 * * *’ # every Friday 06:30 UTC
+    
   push:
 
 jobs:
@@ -12,7 +16,3 @@ jobs:
       - uses: github/super-linter@v3
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-on:
-schedule:
-- cron: ‘* 1 * * *’ # every Friday 06:30 UTC
