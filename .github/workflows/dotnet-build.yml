@@ -7,19 +7,18 @@ on:
   push:
 
 jobs:
-  lint:
-    name: Lint Code Base
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v2
-      - uses: github/super-linter@v3
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   build:
     name: .Net Build
     runs-on: ubuntu-latest
     steps:
-      - name: build
-        run: dotnet build --project **/*.csproj
+    - uses: actions/checkout@v4
+    - name: Setup dotnet
+      uses: actions/setup-dotnet@v3
+      with:
+        dotnet-version: '6.0.x'
+    - name: Install dependencies
+      run: dotnet restore
+    - name: Build
+      run: dotnet build
           
