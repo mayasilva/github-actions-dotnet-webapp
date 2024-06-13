@@ -12,12 +12,14 @@ jobs:
     runs-on: ubuntu-latest
     steps: 
       - run: echo "teste"
-
-  #marketplace
+      
   build:
     name: .Net Build
     runs-on: ubuntu-latest
     steps:
+    #marketplace - Setup .NET Core SDK
+    - uses: actions/setup-dotnet@v4.0.0
+    
     - uses: actions/checkout@v4
     - name: Setup dotnet
       uses: actions/setup-dotnet@v3
@@ -27,4 +29,9 @@ jobs:
       run: dotnet restore **/*.csproj
     - name: Build
       run: dotnet build **/*.csproj --no-restore
-          
+      
+  #marketplace
+  job-markeplace:
+  steps:
+    uses: actions/setup-dotnet@v4.0.0
+  
